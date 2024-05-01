@@ -1,9 +1,15 @@
 #!/bin/bash
-# check if wget is install and if not install it
-if ! [ -x "$(command -v wget)" ]; then
-    sudo apt update -y
-    sudo apt install wget -y
-fi
+# Array of tools to install
+tools=("wget" "svn" "zsh")
+
+# Loop through the array and check if each tool is installed
+for tool in "${tools[@]}"; do
+    if ! [ -x "$(command -v $tool)" ]; then
+        # Install the tool
+        sudo apt update -y
+        sudo apt update install $tool -y
+    fi
+done
 
 # check if starship is installed and if not install it
 if ! [ -x "$(command -v starship)" ]; then
@@ -12,11 +18,6 @@ if ! [ -x "$(command -v starship)" ]; then
     mkdir -p ~/.config
     wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
     source ~/.bashrc
-fi
-
-# check if zsh is installed and if not install it
-if ! [ -x "$(command -v zsh)" ]; then
-    sudo apt install zsh -y
 fi
     
 # check if oh my zsh is installed and if not install it
