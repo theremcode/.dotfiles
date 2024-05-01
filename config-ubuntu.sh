@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Array of tools to install
-tools=("wget" "svn" "zsh")
+tools=("wget" "zsh")
 
 # Update package lists once
 if ! sudo apt update; then
