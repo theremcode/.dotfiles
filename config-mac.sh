@@ -8,15 +8,12 @@ fi
 if ! [ -x "$(command -v brew)" ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-
 # Install Starship
-curl -sS https://starship.rs/install.sh | sh
-echo 'eval "$(starship init bash)"' >> ~/.bashrc
+brew install starship
 mkdir -p ~/.config
 wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
-source ~/.bashrc
 
 # Install Oh My zsh
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
-source ~/.zshrc
+
