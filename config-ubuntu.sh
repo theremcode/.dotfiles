@@ -4,13 +4,18 @@
 tools=("wget" "svn" "zsh")
 
 # Update package lists once
-sudo apt update -y
+if ! sudo apt update; then
+    echo "Failed to update packages list, exiting..."
+    exit 1
+fi
 
 # Loop through the array and check if each tool is installed
 for tool in "${tools[@]}"; do
     if ! [ -x "$(command -v $tool)" ]; then
-        # Install the tool
+        echo "Installing $tool..."
         sudo apt install $tool -y
+    else
+        echo "$tool is already installed."
     fi
 done
 
