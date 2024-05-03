@@ -40,6 +40,6 @@ fi
 # check if oh my zsh is installed and if not install it
 if ! [ -d ~/.oh-my-zsh ]; then
     sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-    svn export https://raw.githubusercontent.com/theremcode/.dotfiles/.zsh ~/
+    svn export https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh ~/
     wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
 fi

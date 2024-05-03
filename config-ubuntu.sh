@@ -35,7 +35,7 @@ fi
 
 # Download and install .zsh files
 wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
-svn export https://raw.githubusercontent.com/theremcode/.dotfiles/.zsh ~/
+svn export https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh ~/
 
 
 # Ensure .zshrc is sourced from .bashrc
