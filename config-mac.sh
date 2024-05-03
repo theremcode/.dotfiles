@@ -6,7 +6,7 @@ if ! [ -x "$(command -v brew)" ]; then
 fi
 
 # Array of tools to install
-tools=("wget" "svn" "starship" "zsh")
+tools=("wget" "subversion" "starship" "zsh")
 
 # Loop through the array and check if each tool is installed
 for tool in "${tools[@]}"; do
