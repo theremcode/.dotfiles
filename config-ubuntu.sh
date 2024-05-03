@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Array of tools to install
-tools=("wget" "nano" "subversion")
+tools=("nano")
 
 # Update package lists once
 if ! sudo apt update; then
@@ -35,8 +35,8 @@ fi
 
 # Download and install .zsh files
 wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
-svn export https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh ~/
-
+wget -O ~/.zsh/starship.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/starship.zsh
+wget -O ~/.zsh/aliases.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliases.zsh
 
 # Ensure .zshrc is sourced from .bashrc
 if ! grep -q "source ~/.zshrc" ~/.bashrc; then

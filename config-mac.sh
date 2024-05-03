@@ -6,7 +6,7 @@ if ! [ -x "$(command -v brew)" ]; then
 fi
 
 # Array of tools to install
-tools=("wget" "subversion" "starship" "zsh")
+tools=("starship" "zsh")
 
 # Loop through the array and check if each tool is installed
 for tool in "${tools[@]}"; do
@@ -40,6 +40,8 @@ fi
 # check if oh my zsh is installed and if not install it
 if ! [ -d ~/.oh-my-zsh ]; then
     sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-    svn export https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh ~/
-    wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
 fi
+
+wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
+wget -O ~/.zsh/starship.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/starship.zsh
+wget -O ~/.zsh/aliases.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliases.zsh
