@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Array of tools to install
-tools=("wget" "zsh")
+tools=("wget" "nano")
 
 # Update package lists once
 if ! sudo apt update; then
