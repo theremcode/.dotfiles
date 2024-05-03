@@ -28,13 +28,13 @@ if ! [ -x "$(command -v starship)" ]; then
     source ~/.bashrc
 fi
 
-# Install Oh My Zsh if not installed
-if ! [ -d ~/.oh-my-zsh ]; then
-    sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-    wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
-fi
+# # Install Oh My Zsh if not installed
+# if ! [ -d ~/.oh-my-zsh ]; then
+#     sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+#     wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
+# fi
 
-# Ensure .zshrc is sourced from .bashrc
-if ! grep -q "source ~/.zshrc" ~/.bashrc; then
-    echo "source ~/.zshrc" >> ~/.bashrc
-fi
+# # Ensure .zshrc is sourced from .bashrc
+# if ! grep -q "source ~/.zshrc" ~/.bashrc; then
+#     echo "source ~/.zshrc" >> ~/.bashrc
+# fi
