@@ -25,13 +25,13 @@ for tool in "${tools[@]}"; do
     fi
 done
 
-# Download and install warp themes
+# Download and install warp theme
 if [ -x "$(command -v warp)" ]; then
     mkdir -p ~/.warp/themes
     wget -O ~/.warp/themes/dark.yaml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.warp/themes/dark.yml
 fi
 
-# Download and install starship them
+# Download and install starship theme
 if [ -x "$(command -v starship)" ]; then
     mkdir -p ~/.config
     wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Array of tools to install
-tools=("wget" "nano")
+tools=("wget" "nano" "svn")
 
 # Update package lists once
 if ! sudo apt update; then
@@ -31,8 +31,12 @@ fi
 # Install Oh My Zsh if not installed
 if ! [ -d ~/.oh-my-zsh ]; then
     sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-    wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
 fi
+
+# Download and install .zsh files
+wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
+svn export https://raw.githubusercontent.com/theremcode/.dotfiles/.zsh ~/
+
 
 # Ensure .zshrc is sourced from .bashrc
 if ! grep -q "source ~/.zshrc" ~/.bashrc; then
