@@ -46,3 +46,6 @@ mkdir -p ~/.zsh
 wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
 wget -O ~/.zsh/starship.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/starship.zsh
 wget -O ~/.zsh/aliases.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliases.zsh
+
+# Install az cli
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash

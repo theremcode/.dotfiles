@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Array of tools to install
-tools=("nano")
+tools=("nano", "dos2unix")
 
 # Update package lists once
 if ! sudo apt update; then
@@ -43,3 +43,6 @@ wget -O ~/.zsh/aliases.zsh https://raw.githubusercontent.com/theremcode/.dotfile
 if ! grep -q "source ~/.zshrc" ~/.bashrc; then
     echo "source ~/.zshrc" >> ~/.bashrc
 fi
+
+# Install az cli
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
