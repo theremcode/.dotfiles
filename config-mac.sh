@@ -36,16 +36,3 @@ if [ -x "$(command -v starship)" ]; then
     mkdir -p ~/.config
     wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
 fi
-
-# check if oh my zsh is installed and if not install it
-if ! [ -d ~/.oh-my-zsh ]; then
-    sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-fi
-# Download and install .zsh files
-mkdir -p ~/.zsh
-wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
-wget -O ~/.zsh/starship.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/starship.zsh
-wget -O ~/.zsh/aliases.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliases.zsh
-
-# Install az cli
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
