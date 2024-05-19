@@ -15,7 +15,7 @@ $php\
 \n$character
 """
 
-right-format = """
+right_format = """
 $terraform
 $python
 $time\

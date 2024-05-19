@@ -19,6 +19,33 @@ for tool in "${tools[@]}"; do
     fi
 done
 
+#!/bin/bash
+
+# Function to install a font
+install_font() {
+    local url=$1
+    local font_name=$2
+    temp_dir=$(mktemp -d)
+    wget -O "$temp_dir/$font_name.zip" "$url"
+    unzip "$temp_dir/$font_name.zip" -d "$temp_dir"
+    mkdir -p ~/.local/share/fonts
+    mv "$temp_dir"/*.ttf ~/.local/share/fonts/
+    fc-cache -f -v
+    rm -rf "$temp_dir"
+    echo "$font_name installed successfully."
+}
+
+# Install JetBrains Mono Nerd Font
+install_font "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip" "JetBrainsMono"
+
+# Verify the installation
+if fc-list | grep -i "JetBrains Mono Nerd Font"; then
+    echo "JetBrains Mono Nerd Font is successfully installed."
+else
+    echo "Failed to install JetBrains Mono Nerd Font."
+fi
+
+
 # Check and install Starship
 if ! [ -x "$(command -v starship)" ]; then
     curl -sS https://starship.rs/install.sh | sh
@@ -27,6 +54,8 @@ if ! [ -x "$(command -v starship)" ]; then
     wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
     source ~/.bashrc
 else
+    wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
+    source ~/.bashrc
     echo "Starship is already installed."
 fi
 

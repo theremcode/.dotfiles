@@ -1,6 +1,6 @@
 # .dotfiles
 
-My configuration to customize the shellconsoles with zsh and starship.
+My configuration to customize the shellconsoles with starship and install necessary tools.
 
 ## install command in ubuntu
 
