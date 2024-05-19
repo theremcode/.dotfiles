@@ -24,7 +24,7 @@ $time\
 
 
 [os]
-format = '[$symbol](bg:#a3aed2 fg:#090c0c)'   
+format = '[$symbol](bold black) '   
 disabled = false
 
 [os.symbols]
