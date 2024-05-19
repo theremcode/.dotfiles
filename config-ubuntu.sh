@@ -19,8 +19,6 @@ for tool in "${tools[@]}"; do
     fi
 done
 
-#!/bin/bash
-
 # Function to install a font
 install_font() {
     local url=$1
@@ -37,6 +35,13 @@ install_font() {
 
 # Install JetBrains Mono Nerd Font
 install_font "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip" "JetBrainsMono"
+
+# Verify the installation
+if fc-list | grep -qi "JetBrainsMono"; then
+    echo "JetBrains Mono Nerd Font is successfully installed."
+else
+    echo "Failed to install JetBrains Mono Nerd Font."
+fi
 
 # Verify the installation
 if fc-list | grep -i "JetBrains Mono Nerd Font"; then
