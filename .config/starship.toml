@@ -12,6 +12,11 @@ $rust\
 $golang\
 $php\
 [](fg:#212736 bg:#1d2230)\
+"""
+
+right-format = """
+$terraform
+$python
 $time\
 [ ](fg:#1d2230)\
 \n$character"""
@@ -76,6 +81,6 @@ format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
 
 [terraform]
 disabled = false
-format = "via [$symbol$workspace]($style) "
+format = "[$symbol$workspace]($style) "
 symbol = "ﰉ "
 style = "bold 105"
