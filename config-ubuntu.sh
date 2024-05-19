@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Array of tools to install
-tools=("nano" "dos2unix" "yq" "jq" "curl" "wget" "git" "unzip" "zip" "python3" "python3-pip" "python3-venv" "build-essential" "apt-transport-https" "ca-certificates" "software-properties-common")
+tools=("nano" "dos2unix" "yq" "jq" "curl" "wget" "git" "unzip" "zip" "python3" "python3-pip" "python3-venv" "build-essential" "apt-transport-https" "ca-certificates" "software-properties-common" "gnupg")
 
 # Update package lists once
 if ! sudo apt update; then
@@ -37,9 +37,21 @@ else
     echo "Azure CLI is already installed."
 fi
 
+# Determine system architecture
+ARCH=$(uname -m)
+
 # Check and install kubectl
 if ! [ -x "$(command -v kubectl)" ]; then
-    curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+    if [ "$ARCH" == "x86_64" ]; then
+        KUBECTL_URL="https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"
+    elif [ "$ARCH" == "aarch64" ]; then
+        KUBECTL_URL="https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/arm64/kubectl"
+    else
+        echo "Unsupported architecture: $ARCH"
+        exit 1
+    fi
+
+    curl -LO "$KUBECTL_URL"
     chmod +x kubectl
     sudo mv kubectl /usr/local/bin/
 else
@@ -56,23 +68,13 @@ else
     echo "Helm is already installed."
 fi
 
-# Determine system architecture
-ARCH=$(uname -m)
-if [ "$ARCH" == "x86_64" ]; then
-    TERRAFORM_URL="https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_amd64.zip"
-elif [ "$ARCH" == "aarch64" ]; then
-    TERRAFORM_URL="https://releases.hashicorp.com/terraform/0.14.7/terraform_0.14.7_linux_arm64.zip"
-else
-    echo "Unsupported architecture: $ARCH"
-    exit 1
-fi
-
 # Check and install Terraform
 if ! [ -x "$(command -v terraform)" ]; then
-    curl -fsSL -o terraform.zip "$TERRAFORM_URL"
-    unzip terraform.zip
-    sudo mv terraform /usr/local/bin/
-    rm terraform.zip
+    wget -O- https://apt.releases.hashicorp.com/gpg | \
+    gpg --dearmor | \
+    sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+    sudo apt update
+    sudo apt-get install terraform
 else
     echo "Terraform is already installed."
 fi
