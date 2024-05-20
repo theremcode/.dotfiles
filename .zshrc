@@ -1,5 +1,15 @@
+# Exit if not running interactively
+[[ $- != *i* ]] && return
+
+# Ensure running in zsh
+if [ -z "$ZSH_VERSION" ]; then
+  echo "This is not zsh!"
+  return
+fi
+
 # Load aliases
 [[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
+
 # Load Starship
 #[[ -f ~/.zsh/starship.zsh ]] && source ~/.zsh/starship.zsh
 

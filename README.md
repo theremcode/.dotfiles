@@ -5,7 +5,7 @@ My configuration to customize the shellconsoles with starship and install necess
 ## install command in ubuntu
 
 ```
-bash -c "$(wget https://raw.githubusercontent.com/theremcode/.dotfiles/main/config-ubuntu.sh -O -)"
+bash -c "$(curl -s https://raw.githubusercontent.com/theremcode/.dotfiles/main/config-ubuntu.sh?t=$(date +%s) -o -)"
 
 ```
 

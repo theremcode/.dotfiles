@@ -65,25 +65,25 @@ fi
 # Check and config zsh
 if ! [ -x "$(command -v zsh)" ]; then
     echo 'source ~/.zshrc' >> ~/.zshrc
-    mkdir -p ~/.zsh
-    wget -O ~/.zsh/aliases.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliases.zsh
-    chsh -s /usr/bin/zsh
+    sudo mkdir -p ~/.zsh
+    sudo wget -O ~/.zsh/aliases.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliases.zsh
+    sudo chsh -s /usr/bin/zsh
     source ~/.zshrc
 else
-    mkdir -p ~/.zsh
-    wget -O ~/.zsh/aliases.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliases.zsh
-    wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
-    chsh -s /usr/bin/zsh
+    sudo mkdir -p ~/.zsh
+    sudo wget -O ~/.zsh/aliases.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliases.zsh
+    sudo wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
+    sudo chsh -s /usr/bin/zsh
     source ~/.zshrc
     echo "Zsh is already installed."
 fi
 
 # Check and install Starship
 if ! [ -x "$(command -v starship)" ]; then
-    curl -sS https://starship.rs/install.sh | sh
+    sudo curl -sS https://starship.rs/install.sh | sh
     echo 'eval "$(starship init bash)"' >> ~/.bashrc
-    mkdir -p ~/.config
-    wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
+    sudo mkdir -p ~/.config
+    sudo wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
     source ~/.zshrc
 else
     wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
@@ -93,7 +93,7 @@ fi
 
 # Check and install Azure CLI
 if ! [ -x "$(command -v az)" ]; then
-    curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+    sudo curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 else
     echo "Azure CLI is already installed."
 fi
@@ -113,7 +113,7 @@ if ! [ -x "$(command -v kubectl)" ]; then
     fi
 
     curl -LO "$KUBECTL_URL"
-    chmod +x kubectl
+    sudo chmod +x kubectl
     sudo mv kubectl /usr/local/bin/
 else
     echo "kubectl is already installed."
@@ -121,8 +121,8 @@ fi
 
 # Check and install Helm
 if ! [ -x "$(command -v helm)" ]; then
-    curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-    chmod +x get_helm.sh
+    sudo curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+    sudo chmod +x get_helm.sh
     ./get_helm.sh
     rm get_helm.sh
 else
@@ -131,8 +131,8 @@ fi
 
 # Check and install Terraform
 if ! [ -x "$(command -v terraform)" ]; then
-    wget -O- https://apt.releases.hashicorp.com/gpg | \
-    gpg --dearmor | \
+    sudo wget -O- https://apt.releases.hashicorp.com/gpg | \
+    sudo gpg --dearmor | \
     sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
     sudo apt update
     sudo apt-get install terraform
@@ -142,7 +142,7 @@ fi
 
 # Check and install OCI CLI
 if ! [ -x "$(command -v oci)" ]; then
-    bash -c "$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)"
+    sudo bash -c "$(curl -L https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh)"
 else
     echo "OCI CLI is already installed."
 fi
