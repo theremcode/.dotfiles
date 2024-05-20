@@ -72,7 +72,7 @@ if ! [ -x "$(command -v starship)" ]; then
     source ~/.zshrc
 else
     wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
-    source ~/.zsshrc
+    source ~/.zshrc
     echo "Starship is already installed."
 fi
 
