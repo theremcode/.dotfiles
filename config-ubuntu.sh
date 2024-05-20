@@ -119,3 +119,4 @@ if ! [ -x "$(command -v oci)" ]; then
 else
     echo "OCI CLI is already installed."
 fi
+echo "tmux new-session -d -s mysession \; split-window -h \; split-window -v \; select-pane -t 0 \; attach-session -t mysession" >> ~/.bashrc
