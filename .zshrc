@@ -8,3 +8,4 @@ HISTFILE=~/.zsh_history
 eval "$(starship init zsh)"
 
 export PATH=/home/remco/bin:$PATH
+tmux new-session -d -s mysession \; split-window -h \; split-window -v \; select-pane -t 0 \; attach-session -t mysession
