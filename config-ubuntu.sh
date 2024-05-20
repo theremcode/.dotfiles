@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Array of tools to install
-tools=("nano" "dos2unix" "yq" "jq" "curl" "wget" "git" "unzip" "zip" "python3" "python3-pip" "python3-venv" "build-essential" "apt-transport-https" "ca-certificates" "software-properties-common" "gnupg")
+tools=("nano" "dos2unix" "yq" "jq" "curl" "wget" "git" "unzip" "zip" "python3" "python3-pip" "python3-venv" "build-essential" "apt-transport-https" "ca-certificates" "software-properties-common" "gnupg" "zsh")
 
 # Update package lists once
 if ! sudo apt update; then
@@ -50,8 +50,19 @@ else
     echo "Failed to install JetBrains Mono Nerd Font."
 fi
 
+# Check and config zsh
+if ! [ -x "$(command -v zsh)" ]; then
+    echo 'source ~/.zshrc' >> ~/.zshrc
+    mkdir -p ~/.zsh
+    wget -O ~/.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/
+    source ~/.bashrc
+else
+    wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
+    source ~/.zshrc
+    echo "Starship is already installed."
+fi
 
-# Check and install Starship
+# Check and install Starship and zsh
 if ! [ -x "$(command -v starship)" ]; then
     curl -sS https://starship.rs/install.sh | sh
     echo 'eval "$(starship init bash)"' >> ~/.bashrc

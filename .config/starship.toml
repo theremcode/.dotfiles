@@ -226,11 +226,9 @@ symbol = " "
 symbol = " "
 
 [terraform]
-disabled = false
-format = "[$symbol$workspace]($style) "
+format = "[$symbol terraform]($style) "
 symbol = " "
 style = "bold 105"
-
 
 [zig]
 symbol = " "
