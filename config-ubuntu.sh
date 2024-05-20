@@ -67,26 +67,26 @@ if ! [ -x "$(command -v zsh)" ]; then
     echo 'source ~/.zshrc' >> ~/.zshrc
     mkdir -p ~/.zsh
     wget -O ~/.zsh/aliasses.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliasses.zsh
+    chsh -s /usr/bin/zsh
     source ~/.zshrc
 else
     mkdir -p ~/.zsh
     wget -O ~/.zsh/aliasses.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliasses.zsh
     wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
+    chsh -s /usr/bin/zsh
     source ~/.zshrc
     echo "Zsh is already installed."
 fi
 
-# Check and install Starship and zsh
+# Check and install Starship
 if ! [ -x "$(command -v starship)" ]; then
     curl -sS https://starship.rs/install.sh | sh
     echo 'eval "$(starship init bash)"' >> ~/.bashrc
     mkdir -p ~/.config
     wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
-    chsh -s /usr/bin/zsh
     source ~/.zshrc
 else
     wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
-    chsh -s /usr/bin/zsh
     source ~/.zshrc
     echo "Starship is already installed."
 fi
