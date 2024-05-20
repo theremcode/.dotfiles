@@ -66,12 +66,12 @@ fi
 if ! [ -x "$(command -v zsh)" ]; then
     echo 'source ~/.zshrc' >> ~/.zshrc
     mkdir -p ~/.zsh
-    wget -O ~/.zsh/aliasses.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliasses.zsh
+    wget -O ~/.zsh/aliases.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliases.zsh
     chsh -s /usr/bin/zsh
     source ~/.zshrc
 else
     mkdir -p ~/.zsh
-    wget -O ~/.zsh/aliasses.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliasses.zsh
+    wget -O ~/.zsh/aliases.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliases.zsh
     wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
     chsh -s /usr/bin/zsh
     source ~/.zshrc
