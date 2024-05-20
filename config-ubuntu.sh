@@ -57,6 +57,7 @@ if ! [ -x "$(command -v zsh)" ]; then
     wget -O ~/.zsh/aliasses.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliasses.zsh
     source ~/.zshrc
 else
+    mkdir -p ~/.zsh
     wget -O ~/.zsh/aliasses.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliasses.zsh
     wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
     source ~/.zshrc

@@ -13,4 +13,4 @@ alias ls="eza --icons --group-directories-first"
 alias ll="eza --icons --group-directories-first -l"
 #alias grep='grep --color'
 
-alias prx="ssh root@prx-prod-2.home.clcreative.de"
+alias prx="ssh root@nogiets"
