@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Array of tools to install
-tools=("nano" "dos2unix" "yq" "jq" "curl" "wget" "git" "unzip" "zip" "python3" "python3-pip" "python3-venv" "build-essential" "apt-transport-https" "ca-certificates" "software-properties-common" "gnupg" "zsh")
+tools=("nano" "dos2unix" "yq" "jq" "curl" "wget" "git" "unzip" "zip" "python3" "python3-pip" "python3-venv" "build-essential" "apt-transport-https" "ca-certificates" "software-properties-common" "gnupg" "zsh" "eza")
 
 # Update package lists once
 if ! sudo apt update; then
@@ -54,12 +54,13 @@ fi
 if ! [ -x "$(command -v zsh)" ]; then
     echo 'source ~/.zshrc' >> ~/.zshrc
     mkdir -p ~/.zsh
-    wget -O ~/.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliasses.zsh
-    source ~/.bashrc
+    wget -O ~/.zsh/aliasses.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliasses.zsh
+    source ~/.zshrc
 else
+    wget -O ~/.zsh/aliasses.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliasses.zsh
     wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
     source ~/.zshrc
-    echo "Starship is already installed."
+    echo "Zsh is already installed."
 fi
 
 # Check and install Starship and zsh
@@ -68,10 +69,10 @@ if ! [ -x "$(command -v starship)" ]; then
     echo 'eval "$(starship init bash)"' >> ~/.bashrc
     mkdir -p ~/.config
     wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
-    source ~/.bashrc
+    source ~/.zshrc
 else
     wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
-    source ~/.bashrc
+    source ~/.zsshrc
     echo "Starship is already installed."
 fi
 
