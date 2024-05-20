@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Array of tools to install
-tools=("nano" "dos2unix" "yq" "jq" "curl" "wget" "git" "unzip" "zip" "python3" "python3-pip" "python3-venv" "build-essential" "apt-transport-https" "ca-certificates" "software-properties-common" "gnupg" "zsh" "gpg")
+tools=("nano" "dos2unix" "yq" "jq" "curl" "wget" "git" "unzip" "zip" "python3" "python3-pip" "python3-venv" "build-essential" "apt-transport-https" "ca-certificates" "software-properties-common" "gnupg" "zsh" "gpg" "tmux")
 
 # Update package lists once
 if ! sudo apt update; then
@@ -19,7 +19,7 @@ for tool in "${tools[@]}"; do
     fi
 done
 
-# Check and config zsh
+# Check and config eza
 if ! [ -x "$(command -v eza)" ]; then
     sudo mkdir -p /etc/apt/keyrings
     wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
@@ -82,9 +82,11 @@ if ! [ -x "$(command -v starship)" ]; then
     echo 'eval "$(starship init bash)"' >> ~/.bashrc
     mkdir -p ~/.config
     wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
+    chsh -s /usr/bin/zsh
     source ~/.zshrc
 else
     wget -O ~/.config/starship.toml https://raw.githubusercontent.com/theremcode/.dotfiles/main/.config/starship.toml
+    chsh -s /usr/bin/zsh
     source ~/.zshrc
     echo "Starship is already installed."
 fi
