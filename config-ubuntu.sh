@@ -54,7 +54,7 @@ fi
 if ! [ -x "$(command -v zsh)" ]; then
     echo 'source ~/.zshrc' >> ~/.zshrc
     mkdir -p ~/.zsh
-    wget -O ~/.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/
+    wget -O ~/.zsh https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zsh/aliasses.zsh
     source ~/.bashrc
 else
     wget -O ~/.zshrc https://raw.githubusercontent.com/theremcode/.dotfiles/main/.zshrc
