@@ -146,5 +146,5 @@ if ! [ -x "$(command -v oci)" ]; then
 else
     echo "OCI CLI is already installed."
 fi
-chsh -s $(which zsh)
+chsh -s /usr/bin/zsh
 source ~/.zshrc
