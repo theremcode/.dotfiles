@@ -37,4 +37,4 @@ if ! tmux has-session -t mysession 2>/dev/null; then
     split-window -v \; \
     select-pane -t 0
 fi
-tmux attach-session -t mysession
+#tmux attach-session -t mysession
