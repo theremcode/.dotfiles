@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Array of tools to install
-tools=("nano" "dos2unix" "yq" "jq" "curl" "wget" "git" "unzip" "zip" "python3" "python3-pip" "python3-venv" "build-essential" "apt-transport-https" "ca-certificates" "software-properties-common" "gnupg" "zsh" "gpg" "tmux")
+tools=("nano" "dos2unix" "yq" "jq" "curl" "wget" "git" "unzip" "zip" "unzip" "python3" "python3-pip" "python3-venv" "build-essential" "apt-transport-https" "ca-certificates" "software-properties-common" "gnupg" "zsh" "gpg" "tmux")
 
 # Update package lists once
 if ! sudo apt update; then
