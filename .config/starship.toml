@@ -8,17 +8,20 @@ $git_branch\
 $git_status\
 [](fg:#394260 bg:#212736)\
 $nodejs\
-$rust\
 $golang\
 $php\
+$jobs\
+$line_break
 [](fg:#212736 bg:#1d2230)\
 \n$character
 """
 
 right_format = """
-$terraform
-$python
+$terraform\
+$azure\
+$python\
 $time\
+$cmd_duration\
 [ ](fg:#1d2230)\
 """
 [username]
@@ -27,6 +30,12 @@ style_user = "bg:#9A348E"
 style_root = "bg:#9A348E"
 format = '[$user ](bg:#a3aed2 fg:#090c0c)'
 disabled = false
+
+[azure]
+disabled = false
+format = 'on [$symbol($subscription)]($style) '
+symbol = '󰠅 '
+style = 'blue bold'
 
 [os]
 format = '[$symbol](bg:#a3aed2 fg:#090c0c)'   

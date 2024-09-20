@@ -38,3 +38,4 @@ if ! tmux has-session -t mysession 2>/dev/null; then
     select-pane -t 0
 fi
 #tmux attach-session -t mysession
+neofetch
