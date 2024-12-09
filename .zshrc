@@ -40,8 +40,19 @@ fi
 #tmux attach-session -t mysession
 neofetch
 
+# Enable zsh-autosuggestions & zsh-syntax-highlighting
 autoload -Uz compinit
 compinit
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh 
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt EXTENDED_HISTORY
 
 # mount folder on mac
 # Check if the directory does not exist
