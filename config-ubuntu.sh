@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Array of tools to install
-tools=("nano" "dos2unix" "yq" "jq" "curl" "wget" "git" "unzip" "zip" "unzip" "python3" "python3-pip" "python3-venv" "build-essential" "apt-transport-https" "ca-certificates" "software-properties-common" "gnupg" "zsh" "gpg" "tmux" "neofetch")
+tools=("nano" "dos2unix" "jq" "curl" "wget" "git" "unzip" "zip" "unzip" "python3" "python3-pip" "python3-venv" "build-essential" "apt-transport-https" "ca-certificates" "software-properties-common" "gnupg" "zsh" "gpg" "tmux" "neofetch")
 
 # Update package lists once
 if ! sudo apt update; then
@@ -18,6 +18,15 @@ for tool in "${tools[@]}"; do
         echo "$tool is already installed."
     fi
 done
+
+
+# install yq
+if ! [ -x "$(command -v yq)" ]; then
+    wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_arm64 -O /usr/bin/yq &&\
+    chmod +x /usr/bin/yq
+else
+    echo "Yq is already installed."
+fi
 
 # Check and config eza
 if ! [ -x "$(command -v eza)" ]; then
@@ -131,9 +140,16 @@ fi
 
 # Check and install Terraform
 if ! [ -x "$(command -v terraform)" ]; then
-    sudo wget -O- https://apt.releases.hashicorp.com/gpg | \
-    sudo gpg --dearmor | \
+    sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+    wget -O- https://apt.releases.hashicorp.com/gpg | \
+    gpg --dearmor | \
     sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+    gpg --no-default-keyring \
+    --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+    --fingerprint
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+    https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+    sudo tee /etc/apt/sources.list.d/hashicorp.list
     sudo apt update
     sudo apt-get install terraform
 else
