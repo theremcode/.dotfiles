@@ -162,5 +162,8 @@ if ! [ -x "$(command -v oci)" ]; then
 else
     echo "OCI CLI is already installed."
 fi
+
+sudo apt install zsh-autosuggestions zsh-syntax-highlighting
+
 chsh -s /usr/bin/zsh
 source ~/.zshrc
