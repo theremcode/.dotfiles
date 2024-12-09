@@ -40,6 +40,9 @@ fi
 #tmux attach-session -t mysession
 neofetch
 
+autoload -Uz compinit
+compinit
+
 # mount folder on mac
 # Check if the directory does not exist
 if [ ! -d "/mnt/y" ]; then
