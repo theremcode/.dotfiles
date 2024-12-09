@@ -39,3 +39,12 @@ if ! tmux has-session -t mysession 2>/dev/null; then
 fi
 #tmux attach-session -t mysession
 neofetch
+
+# mount folder on mac
+# Check if the directory does not exist
+if [ ! -d "/mnt/y" ]; then
+    # Create the directory if it doesn't exist
+    sudo mkdir /mnt/y
+fi
+sudo mount -t drvfs Y: /mnt/y
+cd /mnt/y/repo/wigo4it
